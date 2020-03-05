@@ -210,3 +210,47 @@ const onModalClose = () => setState({ isModalVisible: false });
   )}
 </div>;
 ```
+
+### Positioning
+
+```jsx
+const { zdSpacing } = require('@zendeskgarden/css-variables');
+const { Button } = require('@zendeskgarden/react-buttons/src');
+
+initialState = {
+  isModalVisible: false,
+  isInline: false
+};
+
+const onModalClose = () => setState({ isModalVisible: false });
+
+<div style={{ position: 'relative', height: 500 }}>
+  <Grid>
+    <Row>
+      <Col md>
+        <Button onClick={() => setState({ isModalVisible: true, isInline: false })}>
+          Standard
+        </Button>
+      </Col>
+      <Col md>
+        <Button onClick={() => setState({ isModalVisible: true, isInline: true })}>Inline</Button>
+      </Col>
+    </Row>
+  </Grid>
+  {state.isModalVisible && (
+    <Modal onClose={onModalClose} style={{ paddingBottom: zdSpacing }} isInline={state.isInline}>
+      <Header>{state.width} Header</Header>
+      <Body>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Body>
+      <Close aria-label="Close modal" />
+    </Modal>
+  )}
+</div>;
+```

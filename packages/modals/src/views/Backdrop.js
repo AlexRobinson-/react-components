@@ -28,6 +28,10 @@ const Backdrop = styled.div.attrs(props => ({
   })
 }))`
   ${props => retrieveTheme(COMPONENT_ID, props)};
+
+  &&& {
+    ${props => props.isInline && `position: absolute;`}
+  }
 `;
 
 Backdrop.propTypes = {
